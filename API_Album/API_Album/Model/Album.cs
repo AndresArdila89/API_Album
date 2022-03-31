@@ -5,7 +5,7 @@ using System.Text;
 
 namespace API_Album.Model
 {
-    class Album
+    public class Album
     {
         [JsonProperty("albumId")]
         public int AlbumId { get; set; }
@@ -19,5 +19,6 @@ namespace API_Album.Model
         public string ThumbnailUrl { get; set; }
 
         public string tbUrl { get { return this.ThumbnailUrl + ".png"; } }
+        public string extUrl { get { return this.Url + ".png"; } }
     }
 }

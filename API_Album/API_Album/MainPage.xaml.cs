@@ -13,10 +13,12 @@ namespace API_Album
 {
     public partial class MainPage : ContentPage
     {
+        private List<Album> albs = new List<Album>();
         public MainPage()
         {
+            
             InitializeComponent();
-            fetchAlbum(); 
+            fetchAlbum();       
         }
 
         public async void fetchAlbum()
@@ -25,12 +27,29 @@ namespace API_Album
             using (HttpClient client = new HttpClient())
             {
                 var response = await client.GetStringAsync(url);
-                var albums = JsonConvert.DeserializeObject<List<Album>>(response);
-                carouselItems.ItemsSource = albums;
+                albs = JsonConvert.DeserializeObject<List<Album>>(response);
+                carouselItems.ItemsSource = albs;
 
             }
         }
 
+        private void Button_Clicked(object sender, EventArgs e)
+        {
 
+            var id = Convert.ToInt32(((Button)sender).BindingContext);
+
+            foreach (Album album in albs)
+            {
+                if (album.Id == id)
+                {
+
+                    Navigation.PushAsync(new details(album));
+                   
+                }
+            }
+
+
+
+        }
     }
 }

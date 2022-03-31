@@ -15,15 +15,21 @@
                                HeightRequest="300"
                                WidthRequest="300"
                                HorizontalOptions="Center"
-                               VerticalOptions="CenterAndExpand">
+                               VerticalOptions="CenterAndExpand"
+                               >
 
                             <StackLayout>
-                                <Label Text="{Binding tbUrl }"/>
-                                <Image Source="{Binding tbUrl}"
-                                       Aspect="AspectFill"
-                                       HeightRequest="150"
-                                       WidthRequest="150"
-                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding ThumbnailUrl }"/>
+
+
+                                <Button ImageSource="{Binding ThumbnailUrl}"
+                                        Clicked="Button_Clicked"
+                                        BindingContext="{Binding Id}"
+                                        HeightRequest="150"
+                                        WidthRequest="150"
+                                        HorizontalOptions="Center">
+                                    
+                                </Button>
                             </StackLayout>
                         </Frame>
                     </StackLayout>
